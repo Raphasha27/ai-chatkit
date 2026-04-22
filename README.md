@@ -1,12 +1,10 @@
-<h1 align="center"> AI-CHATKIT </h1>
-<p align="center">
-  <strong style="background-color: green;">English</strong>
-  |
-  <a href="./README_zh.md" target="_Self">中文</a>
-</p>
-AI-CHATKIT is a full-stack AI agent chat tool built using components such as langGraph, FastAPI, NextJS, and Chroma.
+# 🤖 KIROV DYNAMICS | AI CHATKIT
 
-This project serves as a template to help you quickly build related AI agent chat applications using the langGraph framework, and supports RAG (Retrieval-Augmented Generation) to enhance the knowledge base Q&A capabilities of agents.
+[![Kirov Dynamics](https://img.shields.io/badge/Kirov_Dynamics-AI_Agent_Orchestrator-002D62?style=for-the-badge&labelColor=0d1117)](https://github.com/Raphasha27)
+![Role](https://img.shields.io/badge/Role-AI_Agent_Orchestrator-blue?style=for-the-badge&labelColor=0d1117)
+
+**AI Chatkit** is a high-performance, modular AI chat platform designed for complex agent orchestration. Developed by **Kirov Dynamics Technology**, it demonstrates elite **AI Agent Orchestration** by providing a seamless interface for managing multiple autonomous LLM-driven agents using LangGraph.
+
 
 <img src="./pictures/chat_img.png" width="700"/>  
 
