@@ -10,7 +10,7 @@ on:
 jobs:
   frontend: 
     name: Frontend (Node.js)
-    runs-on: run: working-directory: ./frontend
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,12 +27,12 @@ jobs:
 
   backend: 
     name: Backend (Python)
-    runs-on: run: working-directory: ./backend
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: -
+          python-version: '3.11'
     name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -44,8 +44,9 @@ jobs:
   security_scan: 
     name: Security Scan (Trivy)
     needs: [frontend, backend]
-    runs-on: -
-    uses: actions/checkout@v4
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
