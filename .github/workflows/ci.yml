@@ -1,47 +1,37 @@
 name: Continuous Integration
 
 on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
   workflow_dispatch:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
-  frontend:
+  frontend: 
     name: Frontend (Node.js)
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./frontend
+    runs-on: run: working-directory: ./frontend
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: './frontend/package-lock.json'
+          node-version: cache-dependency-path: './frontend/package-lock.json'
       - name: Install dependencies
         run: npm install --legacy-peer-deps
       - name: Build
         run: npm run build --if-present
-        env:
-          NEXT_TELEMETRY_DISABLED: 1
+        env: 
+    NEXT_TELEMETRY_DISABLED: 1
 
-  backend:
+  backend: 
     name: Backend (Python)
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./backend
+    runs-on: run: working-directory: ./backend
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-          cache: 'pip'
-      - name: Install dependencies
+          python-version: - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
@@ -49,12 +39,10 @@ jobs:
       - name: Lint Check
         run: python -m py_compile $(find . -name "*.py" -not -path "*/.*" | head -n 20) || true
 
-  security_scan:
+  security_scan: 
     name: Security Scan (Trivy)
     needs: [frontend, backend]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    runs-on: - uses: actions/checkout@v4
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
