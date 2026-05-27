@@ -22,13 +22,13 @@ graph LR
     classDef provider fill:#0a0a0a,stroke:#3b82f6,stroke-width:1px,color:#fff
 
     %% Nodes
-    App[Client App<br>React / Vue]:::client
+    App["Client App<br>React / Vue"]:::client
     
-    SDK[AI Chatkit Core<br>Unified Interface]:::core
+    SDK["AI Chatkit Core<br>Unified Interface"]:::core
     
-    P1[Google Gemini]:::provider
-    P2[OpenAI GPT-4]:::provider
-    P3[Anthropic Claude]:::provider
+    P1["Google Gemini"]:::provider
+    P2["OpenAI GPT-4"]:::provider
+    P3["Anthropic Claude"]:::provider
 
     %% Relationships
     App -->|Stream Request| SDK
