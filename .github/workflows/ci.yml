@@ -1,16 +1,20 @@
-
-name: Standard CI
+name: AI ChatKit CI
 
 on:
   push:
-    branches: [ develop, main ]
+    branches: [main]
   pull_request:
-    branches: [ develop, main ]
+    branches: [main]
 
 jobs:
-  build:
+  lint:
+    name: Python Lint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Run Generic Build
-      run: echo "Generic build/test step. Update this with your project commands."
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install ruff
+      - run: ruff check backend/ --fix
+        continue-on-error: true
