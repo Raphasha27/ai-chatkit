@@ -8,7 +8,7 @@ class DepartmentRepository:
     
     @classmethod
     async def create_department(cls, session: AsyncSession, department: Department) -> Department:
-        session.add(departmnt)
+        session.add(department)
         await session.commit()
         await session.refresh(department)
         return department

@@ -12,7 +12,10 @@ jobs:
   npm-audit:
     name: npm audit
     runs-on: ubuntu-latest
-    if: hashFiles('package.json') != ''
+    if: hashFiles('frontend/package.json') != ''
+    defaults:
+      run:
+        working-directory: frontend
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,13 +39,16 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: npm-audit-report
-          path: npm-audit-report.json
+          path: frontend/npm-audit-report.json
           retention-days: 30
 
   python-safety:
     name: Python Safety Check
     runs-on: ubuntu-latest
-    if: hashFiles('requirements.txt') != ''
+    if: hashFiles('backend/pyproject.toml') != ''
+    defaults:
+      run:
+        working-directory: backend
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -50,11 +56,11 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.13"
 
-      - name: Install safety
-        run: pip install safety
+      - name: Install pip-audit
+        run: pip install pip-audit
 
-      - name: Run safety check
-        run: safety check -r requirements.txt --full-report
+      - name: Run pip-audit
+        run: pip-audit --strict --desc -r pyproject.toml
         continue-on-error: true

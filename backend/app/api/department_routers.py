@@ -38,10 +38,10 @@ async def get_department(
 
 @department_router.get("/get_by_name/{department_name}", response_model=Department)
 async def get_department_by_name(
-    department_id: int,
+    department_name: str,
      session: SessionDep
 ):
-    department = await DepartmentRepository.get_department(session, department_id)
+    department = await DepartmentRepository.get_department(session, department_name)
     if not department:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
