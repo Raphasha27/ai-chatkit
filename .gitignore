@@ -108,3 +108,6 @@ resource/chroma_db/
 
 # Docusaurus / docs build
 .docusaurus/
+
+# Vercel
+.vercel
